@@ -15,6 +15,8 @@ class AssetPaths {
   // Banner Image
   static const String imagewithrating = 'assets/images/image_1.png';
 
+  static const String rating = 'assets/images/image.png';
+
   // Salon Images
   static const String salonChamath1 = 'assets/images/saloon_chamath.png';
   static const String salonChamath2 = 'assets/images/salon_chamath_2.png';

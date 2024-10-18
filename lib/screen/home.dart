@@ -15,11 +15,27 @@ class HomePage extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
-            child: IconButton(
-              icon: Image.asset(AssetPaths.loginIcon, width: 23, height: 23),
-              onPressed: () {
-                // Implement login navigation here
-              },
+            child: Stack(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.notifications, color: Colors.black),
+                  onPressed: () {
+                    // Bell icon action here
+                  },
+                ),
+                Positioned(
+                  top: 12,
+                  right: 12,
+                  child: Container(
+                    width: 8,
+                    height: 8,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -35,6 +51,8 @@ class HomePage extends StatelessWidget {
               Text("Our Services", style: AppTextStyles.servicesText),
               SizedBox(height: 16),
               _buildServicesGrid(),
+              SizedBox(height: 24),
+              _buildRatingImage(),  // Added image between Our Services and Best Saloons
               SizedBox(height: 24),
               Text("Best Saloons", style: AppTextStyles.bestSaloonText),
               SizedBox(height: 16),
@@ -55,9 +73,25 @@ class HomePage extends StatelessWidget {
           onTap: () {
             // Implement login navigation here
           },
-          child: Text(
-            "Login / Signup",
-            style: AppTextStyles.loginText.copyWith(color: AppColors.primary),
+          child: Row(
+            children: [
+              Text(
+                "Login / Signup",
+                style: AppTextStyles.loginText.copyWith(
+                  color: AppColors.secondary, // Updated color
+                  fontSize: 19, // Updated font size
+                  fontWeight: FontWeight.w600, // Updated font weight
+                  height: 23.16 / 19, // Updated line height
+                ),
+              ),
+              SizedBox(width: 4), // Adjust spacing between text and icon
+              // Image.asset(
+              //   AssetPaths.loginIcon,
+              //   width: 23,
+              //   height: 23,
+              //   fit: BoxFit.contain,
+              // ),
+            ],
           ),
         ),
       ],
@@ -68,7 +102,7 @@ class HomePage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16.0),
       child: Image.asset(
-        AssetPaths.imagewithrating, // Replace with the new image with rating
+        AssetPaths.imagewithrating, // Updated banner image
         fit: BoxFit.cover,
       ),
     );
@@ -113,6 +147,16 @@ class HomePage extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ],
+    );
+  }
+
+  Widget _buildRatingImage() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16.0),
+      child: Image.asset(
+        AssetPaths.rating,  // Using the new rating image provided
+        fit: BoxFit.cover,
+      ),
     );
   }
 
